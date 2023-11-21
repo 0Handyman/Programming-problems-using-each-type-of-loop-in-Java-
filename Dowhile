@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Dowhile {
+
+    public static void main(String[] args) {
+        // Prompt the user for input
+        try (Scanner scanner = new Scanner(System.in)) {
+            // Prompt the user for input
+            System.out.print("Enter an integer to check for primality: ");
+            int number = scanner.nextInt();
+            
+            // Check if the number is a prime using a do-while loop
+            boolean isPrime = true;
+            int divisor = 2;
+            
+            // Special case: 0 and 1 are not prime numbers
+            if (number <= 1) {
+                isPrime = false;
+            } else {
+                do {
+                    // Check if the number is divisible by the current divisor
+                    if (number % divisor == 0) {
+                        isPrime = false;
+                        break;  // Exit the loop if the number is not prime
+                    }
+                    
+                    divisor++;
+                } while (divisor <= Math.sqrt(number));
+            }
+            
+            // Display the result
+            if (isPrime) {
+                System.out.println(number + " is a prime number.");
+            } else {
+                System.out.println(number + " is not a prime number.");
+            }
+        }
+    }
+}
